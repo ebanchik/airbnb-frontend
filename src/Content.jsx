@@ -1,6 +1,9 @@
 import { RoomsIndex } from "./RoomsIndex";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Modal } from "./Modal";
+import { RoomsShow } from "./RoomsShow";
+
 
   export function Content() {
     const rooms = [
@@ -11,6 +14,8 @@ import { useState, useEffect } from "react";
 
     //  web request not working yet - need api 
 // const [rooms, setRooms] = useState([]);
+const [isRoomsShowVisible, setIsRoomsShowVisible] = useState(false);
+const [currentRoom, setCurrentRoom] = useState ({});
 
 //    const handleIndexRooms = () => {
 //      console.log("handleIndexRooms");
@@ -20,12 +25,27 @@ import { useState, useEffect } from "react";
 //      });
 //    };
 
-//    useEffect(handleIndexRooms, []);
+const handleShowRoom = (room) => {
+  console.log("handleShowRoom", room);
+  setIsRoomsShowVisible(true);
+  setCurrentRoom(room);
+};
+
+
+  const handleClose = () => {
+      console.log("handleClose");
+      setIsRoomsShowVisible(false);
+    };
+
+  //  useEffect(handleIndexRooms, []);
 
 
     return (
       <div>
-       <RoomsIndex rooms={rooms}/>
+       <RoomsIndex rooms={rooms} onShowRoom = {handleShowRoom}></RoomsIndex>
+       <Modal show ={isRoomsShowVisible} onClose = {handleClose}>
+       <RoomsShow room = {currentRoom}/>
+       </Modal>
       </div>
     );
   }
