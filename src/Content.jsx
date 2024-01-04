@@ -1,7 +1,9 @@
-export function Content() {
-  return (
-    <main>
-      <h1>Welcome to React!</h1>
-    </main>
-  )
-}
+ import { RoomsIndex } from "./RoomsIndex";
+
+  export function Content() {
+    return (
+      <div>
+       <RoomsIndex />
+      </div>
+    );
+  }
