@@ -37,10 +37,20 @@ const handleShowRoom = (room) => {
       setIsRoomsShowVisible(false);
     };
 
+    // comment out when backend is updated w reviews
 const reviews =[
   {id: 1, rating: 5, comment: "was lit"},
   {id: 2, rating: 4, comment: "overpriced but nice room"},
 ];    
+
+const handleIndexReviews = () => {
+  console.log("handleIndexReviews");
+  axios.get("http://localhost:3000/reviews.json").then((response) => {
+    console.log(response.data);
+    setReviews(response.data);
+  });
+};
+  
 
 const handleCreateReview = (params, successCallback) => {
   console.log("handleCreateReview", params);
@@ -52,6 +62,7 @@ const handleCreateReview = (params, successCallback) => {
   
 
    useEffect(handleIndexRooms, []);
+   useEffect(handleIndexReviews, []);
 
 
     return (
