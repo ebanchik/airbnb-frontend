@@ -7,6 +7,7 @@ import { ReviewsIndex } from "./ReviewsIndex";
 import { Signup } from "./Signup"
 import { Login } from "./Login";
 import { LogoutLink } from "./LogoutLink";
+import { ReviewsNew} from "./ReviewsNew";
 
 
   export function Content() {
@@ -41,6 +42,15 @@ const reviews =[
   {id: 2, rating: 4, comment: "overpriced but nice room"},
 ];    
 
+const handleCreateReview = (params, successCallback) => {
+  console.log("handleCreateReview", params);
+  axios.post("http://localhost:3000/reviews.json", params).then((response) => {
+    setReviews([...reviews, response.data]);
+    successCallback();
+  });
+};
+  
+
    useEffect(handleIndexRooms, []);
 
 
@@ -53,6 +63,7 @@ const reviews =[
        <Modal show ={isRoomsShowVisible} onClose = {handleClose}>
        <RoomsShow room = {currentRoom}/>
        </Modal>
+       <ReviewsNew onCreateReview={handleCreateReview}/>
        <ReviewsIndex reviews={reviews}/>
       </div>
     );
