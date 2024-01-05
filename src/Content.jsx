@@ -3,6 +3,9 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Modal } from "./Modal";
 import { RoomsShow } from "./RoomsShow";
+import { Signup } from "./Signup"
+import { Login } from "./Login";
+import { LogoutLink } from "./LogoutLink";
 
 
   export function Content() {
@@ -41,6 +44,9 @@ const handleShowRoom = (room) => {
 
     return (
       <div>
+       <Login />
+       <Signup />
+       <LogoutLink />
        <RoomsIndex rooms={rooms} onShowRoom = {handleShowRoom}></RoomsIndex>
        <Modal show ={isRoomsShowVisible} onClose = {handleClose}>
        <RoomsShow room = {currentRoom}/>
