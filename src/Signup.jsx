@@ -23,13 +23,13 @@ export function Signup() {
 
   return (
     <div id="signup">
-      <h1>Signup</h1>
       <ul>
         {errors.map((error) => (
           <li key={error}>{error}</li>
         ))}
       </ul>
       <form onSubmit={handleSubmit}>
+      <h2>Signup</h2>
         <div>
           Name: <input name="name" type="text" />
         </div>

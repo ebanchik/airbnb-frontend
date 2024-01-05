@@ -8,8 +8,8 @@ export function ReviewsNew(props) {
 
   return (
     <div>
-      <h1>Leave a Review of Your Stay</h1>
       <form onSubmit={handleSubmit}>
+      <h2>Leave a Review of Your Stay</h2>
         <div>
           Rating: <input name="rating" type="text" />
         </div>
